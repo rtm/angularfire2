@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/database';
+import { AngularFireDatabase } from 'angularfire2/database';
 @Component({
   selector: 'app-root',
   template: `

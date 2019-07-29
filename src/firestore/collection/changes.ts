@@ -54,28 +54,24 @@ export function combineChanges<T>(current: DocumentChange<T>[], changes: Documen
 export function combineChange<T>(combined: DocumentChange<T>[], change: DocumentChange<T>): DocumentChange<T>[] {
   switch(change.type) {
     case 'added':
-      if (combined[change.newIndex] && combined[change.newIndex].doc.ref.isEqual(change.doc.ref)) {
+      if (combined[change.newIndex] && combined[change.newIndex].doc.id == change.doc.id) {
         // Not sure why the duplicates are getting fired
       } else {
         combined.splice(change.newIndex, 0, change);
       }
       break;
     case 'modified':
-      if (combined[change.oldIndex] == null || combined[change.oldIndex].doc.ref.isEqual(change.doc.ref)) {
-        // When an item changes position we first remove it
-        // and then add it's new position
-        if(change.oldIndex !== change.newIndex) {
-          combined.splice(change.oldIndex, 1);
-          combined.splice(change.newIndex, 0, change);
-        } else {
-          combined.splice(change.newIndex, 1, change);
-        }
+      // When an item changes position we first remove it
+      // and then add it's new position
+      if(change.oldIndex !== change.newIndex) {
+        combined.splice(change.oldIndex, 1);
+        combined.splice(change.newIndex, 0, change);
+      } else {
+        combined.splice(change.newIndex, 1, change);
       }
       break;
     case 'removed':
-      if (combined[change.oldIndex] && combined[change.oldIndex].doc.ref.isEqual(change.doc.ref)) {
-        combined.splice(change.oldIndex, 1);
-      }
+      combined.splice(change.oldIndex, 1);
       break;
   }
   return combined;

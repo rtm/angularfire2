@@ -1,10 +1,11 @@
 import { Injectable, Inject, Optional, NgZone, PLATFORM_ID } from '@angular/core';
 import { Observable, of, from } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { FirebaseAppConfig, FirebaseOptions } from '@angular/fire';
-import { User, auth } from 'firebase/app';
+import { FirebaseAppConfig, FirebaseOptions } from 'angularfire2';
 
-import { FirebaseAuth, FirebaseOptionsToken, FirebaseNameOrConfigToken, _firebaseAppFactory, FirebaseZoneScheduler } from '@angular/fire';
+import { User, auth } from 'firebase';
+
+import { FirebaseAuth, FirebaseOptionsToken, FirebaseNameOrConfigToken, _firebaseAppFactory, FirebaseZoneScheduler } from 'angularfire2';
 
 @Injectable()
 export class AngularFireAuth {
@@ -38,7 +39,7 @@ export class AngularFireAuth {
 
   constructor(
     @Inject(FirebaseOptionsToken) options:FirebaseOptions,
-    @Optional() @Inject(FirebaseNameOrConfigToken) nameOrConfig:string|FirebaseAppConfig|null|undefined,
+    @Optional() @Inject(FirebaseNameOrConfigToken) nameOrConfig:string|FirebaseAppConfig|undefined,
     @Inject(PLATFORM_ID) platformId: Object,
     private zone: NgZone
   ) {

@@ -17,7 +17,7 @@
     "skipLibCheck": true,
     "moduleResolution": "node",
     "paths": {
-      "@angular/fire": ["../../dist/packages-dist"]
+      "angularfire2": ["../../dist/packages-dist"]
     }
   },
   "files": [

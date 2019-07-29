@@ -1,6 +1,6 @@
 import { Subscription, Scheduler } from 'rxjs';
 import { PathReference, DatabaseReference, FirebaseOperation, FirebaseOperationCases } from './interfaces';
-import { FirebaseDatabase } from '@angular/fire';
+import { FirebaseDatabase } from 'angularfire2';
 
 export function isString(value: any): boolean {
   return typeof value === 'string';

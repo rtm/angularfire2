@@ -2,7 +2,7 @@ import { Injectable, Inject, Optional, InjectionToken, NgZone, PLATFORM_ID } fro
 import { createStorageRef, AngularFireStorageReference } from './ref';
 import { createUploadTask, AngularFireUploadTask } from './task';
 import { Observable } from 'rxjs';
-import { FirebaseStorage, FirebaseOptions, FirebaseAppConfig, FirebaseOptionsToken, FirebaseNameOrConfigToken, FirebaseZoneScheduler, _firebaseAppFactory } from '@angular/fire';
+import { FirebaseStorage, FirebaseOptions, FirebaseAppConfig, FirebaseOptionsToken, FirebaseNameOrConfigToken, FirebaseZoneScheduler, _firebaseAppFactory } from 'angularfire2';
 
 import { UploadMetadata } from './interfaces';
 
@@ -22,8 +22,8 @@ export class AngularFireStorage {
 
   constructor(
     @Inject(FirebaseOptionsToken) options:FirebaseOptions,
-    @Optional() @Inject(FirebaseNameOrConfigToken) nameOrConfig:string|FirebaseAppConfig|null|undefined,
-    @Optional() @Inject(StorageBucket) storageBucket:string|null,
+    @Optional() @Inject(FirebaseNameOrConfigToken) nameOrConfig:string|FirebaseAppConfig|undefined,
+    @Optional() @Inject(StorageBucket) storageBucket:string,
     @Inject(PLATFORM_ID) platformId: Object,
     zone: NgZone
   ) {

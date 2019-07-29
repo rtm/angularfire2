@@ -1,18 +1,14 @@
 {
-  "name": "@angular/fire",
+  "name": "angularfire2",
   "version": "ANGULARFIRE2_VERSION",
-  "description": "The official library for Firebase and Angular",
+  "description": "The core module",
   "main": "./bundles/core.umd.js",
   "module": "index.js",
   "es2015": "es2015/index.js",
-  "schematics": "./collection.json",
-  "builders": "./builders.json",
   "keywords": [
     "angular",
     "firebase",
-    "rxjs",
-    "angularfire",
-    "angularfire2"
+    "rxjs"
   ],
   "repository": {
     "type": "git",
@@ -26,8 +22,8 @@
     "@angular/platform-browser": "ANGULAR_VERSION",
     "@angular/platform-browser-dynamic": "ANGULAR_VERSION",
     "firebase": "FIREBASE_VERSION",
-    "rxjs": "RXJS_VERSION"
+    "rxjs": "RXJS_VERSION",
+    "zone.js": "ZONEJS_VERSION"
   },
-  "typings": "index.d.ts",
-  "sideEffects": false
+  "typings": "index.d.ts"
 }

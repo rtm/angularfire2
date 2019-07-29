@@ -4,7 +4,7 @@
 
 ### 0. Prerequisites
 
-AngularFire provides multiple module formats for different types of builds. The guide is based on the Angular CLI. It is possible to do a manual setup with Webpack or a SystemJS build as well.
+AngularFire provides multiple module formats for different types of builds. The guide is based off the Angular CLI. It is possible to do a manual setup with Webpack or a SystemJS build as well.
 
 ```bash
 npm install @angular/cli
@@ -19,19 +19,19 @@ cd <project-name>
 
 The Angular CLI's `new` command will set up the latest Angular build in a new project structure.
 
-### 2. Test your setup
+### 2. Test your Setup
 
 ```bash
 ng serve
 open http://localhost:4200
 ```
 
-You should see a message on the page that says *App works!*
+You should see a message that says *App works!*
 
 ### 3. Install AngularFire and Firebase
 
 ```bash
-npm install @angular/fire firebase --save
+npm install angularfire2 firebase --save
 ```
 
 Now that you have a new project setup, install AngularFire and Firebase from npm.
@@ -62,7 +62,7 @@ Open `/src/app/app.module.ts`, inject the Firebase providers, and specify your F
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { AngularFireModule } from '@angular/fire';
+import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 
 @NgModule({
@@ -76,8 +76,7 @@ import { environment } from '../environments/environment';
 export class AppModule {}
 ```
 
-#### Custom `FirebaseApp` names
-
+#### Custom FirebaseApp Names
 You can optionally provide a custom FirebaseApp name with `initializeApp`.
 
 ```ts
@@ -92,16 +91,14 @@ You can optionally provide a custom FirebaseApp name with `initializeApp`.
 export class AppModule {}
 ```
 
-### 6. Setup individual `@NgModules`
+### 6. Setup individual @NgModules
 
 After adding the AngularFireModule you also need to add modules for the individual @NgModules that your application needs.
-
- - `AngularFireAuthModule`
- - `AngularFireDatabaseModule`
- - `AngularFireFunctionsModule`
- - `AngularFirestoreModule`
- - `AngularFireStorageModule`
- - `AngularFireMessagingModule`
+ - AngularFirestoreModule
+ - AngularFireAuthModule
+ - AngularFireDatabaseModule
+ - AngularFireStorageModule
+ - AngularFireMessagingModule (Future release)
 
 #### Adding the Firebase Database and Auth Modules
 
@@ -111,10 +108,10 @@ For example if your application was using both Firebase authentication and the F
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireStorageModule } from '@angular/fire/storage';
-import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireStorageModule } from 'angularfire2/storage';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
 
 @NgModule({
@@ -131,13 +128,13 @@ import { environment } from '../environments/environment';
 export class AppModule {}
 ```
 
-### 7. Inject `AngularFirestore`
+### 7. Inject AngularFirestore
 
 Open `/src/app/app.component.ts`, and make sure to modify/delete any tests to get the sample working (tests are still important, you know):
 
 ```ts
 import { Component } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore } from 'angularfire2/firestore';
 
 @Component({
   selector: 'app-root',
@@ -151,13 +148,13 @@ export class AppComponent {
 }
 ```
 
-### 8. Bind a Firestore collection to a list
+### 8. Bind to a list
 
 In `/src/app/app.component.ts`:
 
 ```ts
 import { Component } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -189,7 +186,7 @@ Open `/src/app/app.component.html`:
 ng serve
 ```
 
-Run the serve command and navigate to `localhost:4200` in your browser.
+Run the serve command and go to `localhost:4200` in your browser.
 
 And that's it! If it's totally *borked*, file an issue and let us know.
 

@@ -11,7 +11,7 @@ Queries are created by building on the [`firebase.firestore.CollectionReference`
 afs.collection('items', ref => ref.where('size', '==', 'large'))
 ```
 
-### Query options
+**Query Options:**
 
 | method   | purpose            |
 | ---------|--------------------|
@@ -77,13 +77,13 @@ size$.next('large');
 size$.next('small');
 ```
 
-### Example app
+**Example app:**
  
 [See this example in action on StackBlitz](https://stackblitz.com/edit/angularfire-db-api-fbad9p).
 
 ```ts
 import { Component } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
@@ -156,9 +156,9 @@ export class AppComponent {
 }
 ```
 
-**To run the above example as is, you need to have sample data in your Firebase database with the following structure:**
-
-```json
+**To run the above example as is, you need to have sample data in you firebase database with the following structure:**
+ 
+ ```json
 {
   "items": {
     "a" : {
@@ -178,25 +178,6 @@ export class AppComponent {
     }
   }
 }
-```
-
-## Collection Group Queries
-
-To query across collections and sub-collections with the same name anywhere in Firestore, you can use collection group queries.
-
-Collection Group Queries allow you to have a more nested data-structure without sacrificing performance. For example, we could easily query all comments a user posted; even if the comments were stored as a sub-collection under `Articles/**` or even nested deeply (`Articles/**/Comments/**/Comments/**/...`):
-
-```ts
-constructor(private afs: AngularFirestore) { }
-
-ngOnInit() {
-  ...
-  // Get all the user's comments, no matter how deeply nested
-  this.comments$ = afs.collectionGroup('Comments', ref => ref.where('user', '==', userId))
-                      .valueChanges({ idField });
-}
-```
-
-`collectionGroup` returns an `AngularFirestoreCollectionGroup` which is similar to `AngularFirestoreCollection`. The main difference is that `AngularFirestoreCollectionGroup` has no data operation methods such as `add` because it doesn't have a concrete reference.
+ ```
 
 ### [Next Step: Getting started with Firebase Authentication](../auth/getting-started.md)

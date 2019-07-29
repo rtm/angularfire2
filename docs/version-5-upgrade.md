@@ -4,12 +4,11 @@ AngularFire 5.0 is a refactor of the `AngularFireDatabase` module. It removes th
 
 ## Updating `FirebaseListObservable` to `AngularFireList<T>`
 
-Rather than `.list()` returning a `FirebaseListObservable`, it now returns an `AngularFireList<T>`. This service contains methods that allow you to manipulate and stream data.
+Rather than `.list()` returning a `FirebaseListObservable`, it now returns an `AngularFireList<T>`. This service contains methods that allow you manipulate and stream data. 
 
 In the case of streaming back data, you now call one of the observable methods on `AngularFireList`.
 
 ### 4.0
-
 ```ts
 constructor(afDb: AngularFireDatabase) {
   afDb.list('items').subscribe(console.log);
@@ -33,7 +32,6 @@ In AngularFireDatabase 4.0 the snapshot was automatically unwrapped for you and 
 Calling `.valueChanges()` returns an Observable without any metadata. If you are already persisting the key as a property then you are fine. However, if you are relying on `$key`, then you need to use `.snapshotChanges()` and transform the data with an observable `.map()`.
 
 ### 4.0
-
 ```ts
 constructor(afDb: AngularFireDatabase) {
   afDb.list('items').subscribe(items => { 
@@ -43,7 +41,6 @@ constructor(afDb: AngularFireDatabase) {
 ```
 
 ### 5.0
-
 ```ts
 constructor(afDb: AngularFireDatabase) {
   afDb.list('items').snapshotChanges().pipe(
@@ -61,7 +58,6 @@ constructor(afDb: AngularFireDatabase) {
 AngularFire 5.0 removes all custom observables which means their custom operators are gone as well. Instead of using custom operators on either a `FirebaseListObservable` or a `FirebaseObjectObservable`, use the methods on the service based APIs: `AngularFireList` and `AngularFireObject`. There is no resulting code change, but it worth pointing out.
 
 ### 4.0
-
 ```ts
 constructor(afDb: AngularFireDatabase) {
   const listObservable = afDb.list('items');
@@ -71,7 +67,6 @@ constructor(afDb: AngularFireDatabase) {
 ```
 
 ### 5.0
-
 ```ts
 constructor(afDb: AngularFireDatabase) {
   const afList = afDb.list('items');

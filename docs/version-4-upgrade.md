@@ -5,7 +5,7 @@ AngularFire2 4.0 is a refactor of the AngularFire2 package which implements
 
 ### Removing `AngularFire` for Modularity
 
-Prior to 4.0, AngularFire2 did not take advantage of the Firebase SDK's modularity for tree shaking. The `AngularFire` service has now been removed and the library is broken up into smaller `@NgModule`s:
+Prior to 4.0, AngularFire2 did not take advantage of the Firebase SDK's modularity for tree shaking. The `AngularFire` service has now been removed and the library broken up into smaller @NgModules:
 
 * `AngularFireModule`
 * `AngularFireDatabaseModule`
@@ -36,7 +36,7 @@ In 4.0 we've reduced the complexity of the auth module by providing only [`fireb
 ```typescript
 import { AngularFireAuth } from 'angularfire2/auth';
 // Do not import from 'firebase' as you'd lose the tree shaking benefits
-import firebase from 'firebase/app';
+import * as firebase from 'firebase/app';
 ...
 
 user: Observable<firebase.User>;
@@ -75,7 +75,7 @@ import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
 
 // Do not import from 'firebase' as you'd lose the tree shaking benefits
-import firebase from 'firebase/app';
+import * as firebase from 'firebase/app';
 
 
 @NgModule({
@@ -86,13 +86,10 @@ import firebase from 'firebase/app';
     AngularFireDatabaseModule,
     AngularFireAuthModule
   ],
-  bootstrap: [ App ]
+  bootstrap[ App ]
 })
 export class MyModule { }
 
-```
-
-```typescript
 @Component({
   selector: 'my-app',
   template: `

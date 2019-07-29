@@ -10,8 +10,8 @@ the Firebase docs for more information on what methods are available.](https://f
 
 ```ts
 import { Component } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { auth } from 'firebase/app';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { auth } from 'firebase';
 
 @Component({
   selector: 'app-root',
@@ -37,11 +37,6 @@ export class AppComponent {
   }
 }
 ```
-
-## UI Libraries
-
-- Material Design : [ngx-auth-firebaseui](https://github.com/AnthonyNahas/ngx-auth-firebaseui)
-- Bootstrap : [@firebaseui/ng-bootstrap](https://github.com/firebaseui/ng-bootstrap)
 
 ## Cordova
 

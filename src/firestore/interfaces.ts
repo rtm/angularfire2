@@ -1,10 +1,10 @@
 import { Subscriber } from 'rxjs';
-import { firestore } from 'firebase/app';
+import { firestore } from 'firebase';
 
 export type Settings =  firestore.Settings;
 export type CollectionReference = firestore.CollectionReference;
 export type DocumentReference = firestore.DocumentReference;
-export type PersistenceSettings = firestore.PersistenceSettings;
+
 export type DocumentChangeType = firestore.DocumentChangeType;
 export type SnapshotOptions = firestore.SnapshotOptions;
 export type FieldPath = firestore.FieldPath;
@@ -55,8 +55,6 @@ export interface Reference<T> {
 // A convience type for making a query.
 // Example: const query = (ref) => ref.where('name', == 'david');
 export type QueryFn = (ref: CollectionReference) => Query;
-
-export type QueryGroupFn = (query: Query) => Query;
 
 /**
  * A structure that provides an association between a reference
